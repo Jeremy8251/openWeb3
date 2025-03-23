@@ -1,0 +1,39 @@
+{{define "default/index.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/css/base.css">
+</head>
+<body>
+    {{template "public/page_header.html" .}}
+    <h2>{{.title}}</h2>
+    <h2>len={{len .title}}</h2>
+    {{$t := .title}}
+    <h3>变量：{{$t}}</h3>
+   
+    {{if gt .news.Score 90}}
+<p>优秀</p>
+{{else if gt .news.Score 60}}
+<p>及格</p>
+{{else}}
+<p>不及格</p>
+{{end}}
+
+<p>循环遍历</p>
+{{range $key,$value := .hobby}}
+<li>{{$key}}=={{$value}}</li>
+{{end}}
+
+<p>Date: {{UnixToTime .date}}
+</p>
+
+<p>PrintInfo:{{Println .printInfo "success100" }}
+</p>
+
+
+</body>
+</html>
+{{end}}
